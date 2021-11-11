@@ -22,9 +22,11 @@ void tsp(int n, int binaryCities[], int costArray[][n], int st, int end, int out
 
         if(cost < min) {
             min=cost;
-            for(int j=0; j<n;j++) {
+            int j=0;
+            for(j=0; j<n;j++) {
                 output[j] = binaryCities[j];
             }
+            output[j] = binaryCities[0];
         }
     }
     for (int l = st; l < end; l++)
@@ -63,13 +65,13 @@ int main() {
             }
         }
     }
-    int output[n];
+    int output[n+1];
     tsp(n, transformedCities, costArray, 0,n,output);
 
     printf("\n*****output*****\n");
     printf("\nMin cost: %d", min);
     printf("\nPath: ");
-    for (int i=0; i<n;i++) {
+    for (int i=0; i<=n;i++) {
         printf("%c",cities[output[i]]);
     }
     printf("\n");
